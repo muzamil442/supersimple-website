@@ -683,62 +683,6 @@
 <script src="https://studentportal.uoh.edu.pk/resources/assets/quiz_files/js/sweetalert2.js"></script>
 
 
-<script type="text/javascript">
-    // JavaScript current time
-    var currentdate = new Date(); 
-    var jsTime = currentdate.getTime(); // JavaScript time in milliseconds
-
-    // PHP current time passed from server as UNIX timestamp
-    var phpTime = 2025-11-08 14:50:00 * 1000; // Convert to milliseconds
- 
-
-    // Compare times
-    var timeDifference = Math.abs(jsTime - phpTime); // Difference in milliseconds
-    var maxAllowedDifference = 5 * 60 * 1000; // 5 minutes in milliseconds 
-
-    if (timeDifference > maxAllowedDifference) {
-        // Access denied: Disable the button
-        // alert("Access denied: Time mismatch detected. Please correct your clock time before starting Examination");
-
-        // Disable the button
-        var quizStartButton = document.getElementById("quiz_start");
-        quizStartButton.style.pointerEvents = "none"; // Disable clicking
-        quizStartButton.style.opacity = "0.6"; // Make it look disabled
-        quizStartButton.setAttribute("title", "You cannot start the test due to a time mismatch.");
-    } else {
-        // alert("Access granted.");
-    }
-
-
-
-    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    console.log("User Time Zone:", userTimeZone);
-
-    const requiredTimeZone = 'Asia/Karachi';
-
-    if (userTimeZone !== requiredTimeZone) {
-        Swal.fire({
-            title: "Time Zone Mismatch!",
-            text: "Your system time zone is set to " + userTimeZone + 
-                  ". Please set it to Asia/Karachi or Islamabad/Karachi to start the test.",
-            icon: "error",
-            confirmButtonText: "Okay",
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        }).then(() => {
-            // Remove the Start Test button if user tries to proceed anyway
-            const quizStartButton = document.getElementById("quiz_start");
-            if (quizStartButton && quizStartButton.parentNode) {
-                quizStartButton.parentNode.removeChild(quizStartButton);
-            }
-        });
-    }
-
-
-
-
-</script>
-
 
   </div>
   <!-- /.content-wrapper -->
@@ -796,3 +740,4 @@
 
 </body>
 </html>
+
